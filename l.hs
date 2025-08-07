@@ -100,13 +100,39 @@ collatzAnswer = sum [if x>15 then 1 else 0 | x <- collatz_lengths]
 collatzAnswer2 :: Int  
 collatzAnswer2 = length (filter isLong (map collatzChain [1..100]))  
     where isLong xs = length xs > 15 
+--
+-- lambda example
+collatzAnswer3 :: Int  
+collatzAnswer3 = length (filter (\xs -> length xs > 15) (map collatzChain [1..100]))  
 
+-- list comprehension example
+evensBelow100 = [x | x <- [1..100], even x, x < 100]
+
+sum2 :: Num a => [a] -> a
+sum2 = foldl (+) 0
+
+reverse' :: [a] -> [a]
+reverse' = foldl (\x xs -> xs:x) []
+-- don't really understand this
+reverse2 :: [a] -> [a]
+reverse2 = foldr (\xs x -> x++[xs]) []
+
+-- next is foldl1 and foldr1
 
 main = do
 	putStrLn ""
 
+	-- print (reverse' [1..10])
+	-- print (reverse2 [1..10])
+
+	-- print (sum2 [1..5])
+
+	-- print evensBelow100
+
+	-- print collatzAnswer3
 	-- print collatzAnswer
 	-- print collatzAnswer2
+
 
 	-- print oddSquaresLessThan10000 
 	-- print oddSquaresLessThan10000b
